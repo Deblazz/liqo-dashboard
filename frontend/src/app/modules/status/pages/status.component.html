@@ -1,0 +1,30 @@
+<div class="mx-auto px-4 py-4 sm:px-8 lg:container 
+            grid grid-cols-1 justify-items-stretch md:grid-cols-3 gap-6 ">
+            
+  <various-info-box class="lg: mr-8" [title]="'Local installation info'" [icon]="'/outline/home.svg'" [items]="[
+      { label: 'Cluster ID', value: 'liqo-dashboard' },
+      { label: 'Version', value: 'v1.0.1' },
+      { label: 'K8s API server', value: 'https://test.address:1234' }
+    ]">
+  </various-info-box>
+
+  <various-info-box class="lg:ml-4 lg:mr-4" [title]="'Network info'" [icon]="'/outline/graph-view.svg'" [items]="[
+      { label: 'Pod CIDR', value: '8.8.8.8:8080' },
+      { label: 'Service CIDR', value: '8.8.8.8:8080' },
+      { label: 'External CIDR', value: '8.8.8.8:8080' },
+      { label: 'Internal CIDR', value: '8.8.8.8:8080' }
+    ]">
+  </various-info-box>
+
+  <various-info-box class="lg:ml-8"[title]="'Health'" [icon]="'/solid/check.svg'" [items]="[
+      { label: 'Health', value: 'Healthy' },
+      { label: 'Network', value: 'Healthy' },
+      { label: 'Latency', value: '4.7ms' }
+    ]">
+  </various-info-box>
+
+</div>
+
+<app-peering-list class="mt-8">
+
+</app-peering-list>

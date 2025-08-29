@@ -22,6 +22,7 @@
   "menu": {
     "dashboard": "Dashboard",
     "offloadedNamespaces": "Namespace estesi",
+    "liqoStatus": "Stato Liqo",
     "clusters": "Cluster",
     "namespaces": "Namespace"
   },
