@@ -99,6 +99,31 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Pod'
+  /v1/status/local-info:
+    get:
+      summary: Get local cluster info
+      responses:
+        '200':
+          description: Local cluster info
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  clusterID:
+                    type: string
+                  clusterName:
+                    type: string
+                  apiServerUrl:
+                    type: string
+                  nodesCount:
+                    type: integer
+                  namespacesCount:
+                    type: integer
+                  podsCount:
+                    type: integer
+                  resources:
+                    $ref: '#/components/schemas/Resources'
 components:
   schemas:
     ForeignCluster:
