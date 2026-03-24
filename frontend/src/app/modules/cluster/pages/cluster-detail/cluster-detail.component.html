@@ -117,6 +117,14 @@
 
         <div>
           <div class="label">
+            <i class="fa-solid fa-display"></i>
+            {{ t('clusters.details.sharedGPU') }}
+          </div>
+          {{ (cluster?.resourcesAcquired || {}).gpu || '0' }}
+        </div>
+
+        <div>
+          <div class="label">
             <i class="fa-solid fa-box-open"></i>
             {{ t('clusters.details.sharedPods') }}
           </div>
@@ -150,6 +158,14 @@
             {{ t('clusters.details.sharedMemory') }}
           </div>
           {{ (cluster?.resourcesOffered || {}).memory || '0' }}
+        </div>
+
+        <div>
+          <div class="label">
+            <i class="fa-solid fa-display"></i>
+            {{ t('clusters.details.sharedGPU') }}
+          </div>
+          {{ (cluster?.resourcesOffered || {}).gpu || '0' }}
         </div>
 
         <div>

@@ -16,6 +16,7 @@ package getters
 
 import (
 	"context"
+	"strings"
 
 	authv1beta1 "github.com/liqotech/liqo/apis/authentication/v1beta1"
 	liqov1beta1 "github.com/liqotech/liqo/apis/core/v1beta1"
@@ -99,9 +100,17 @@ func parseVirtualNode(ctx context.Context, cl client.Client, vnode *offloadingv1
 		if err := cl.Get(ctx, client.ObjectKey{Name: nodeName}, &node); err != nil {
 			return models.Node{}, err
 		}
+
+		var gpuCapacity resource.Quantity
+		for key, val := range node.Status.Capacity {
+			if strings.Contains(string(key), "gpu") {
+				gpuCapacity.Add(val)
+			}
+		}
 		capacity = models.Resources{
 			CPU:              *node.Status.Capacity.Cpu(),
 			Memory:           *node.Status.Capacity.Memory(),
+			GPU:              gpuCapacity,
 			Pods:             *node.Status.Capacity.Pods(),
 			EphemeralStorage: *node.Status.Capacity.StorageEphemeral(),
 		}
@@ -183,6 +192,7 @@ func getResourcesFromResourceSlice(resSlices []authv1beta1.ResourceSlice) models
 	// Initialize the total offered resources to 0
 	cpuTot := resource.NewQuantity(0, resource.DecimalSI)
 	memTot := resource.NewQuantity(0, resource.BinarySI)
+	gpuTot := resource.NewQuantity(0, resource.DecimalSI)
 	podsTot := resource.NewQuantity(0, resource.DecimalSI)
 	storageTot := resource.NewQuantity(0, resource.BinarySI)
 
@@ -194,11 +204,18 @@ func getResourcesFromResourceSlice(resSlices []authv1beta1.ResourceSlice) models
 		memTot.Add(*resSlices[i].Status.Resources.Memory())
 		podsTot.Add(*resSlices[i].Status.Resources.Pods())
 		storageTot.Add(*resSlices[i].Status.Resources.StorageEphemeral())
+
+		for key, val := range resSlices[i].Status.Resources {
+			if strings.Contains(string(key), "gpu") {
+				gpuTot.Add(val)
+			}
+		}
 	}
 
 	return models.Resources{
 		CPU:              *cpuTot,
 		Memory:           *memTot,
+		GPU:              *gpuTot,
 		Pods:             *podsTot,
 		EphemeralStorage: *storageTot,
 	}

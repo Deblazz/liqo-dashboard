@@ -23,6 +23,6 @@ export interface Cluster {
   authenticationStatus?: string;
   offloadingStatus?: string;
   networkLatency?: string;
-  resourcesOffered?: { cpu: string, memory: string, pods: string, "ephemeralStorage": string };
-  resourcesAcquired?: { cpu: string, memory: string, pods: string, "ephemeralStorage": string };
+  resourcesOffered?: { cpu: string, memory: string, gpu:string, pods: string, "ephemeralStorage": string };
+  resourcesAcquired?: { cpu: string, memory: string, gpu:string, pods: string, "ephemeralStorage": string };
 }

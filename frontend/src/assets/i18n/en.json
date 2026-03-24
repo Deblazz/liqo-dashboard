@@ -68,6 +68,7 @@
       "resourcesOffered": "Resources offered",
       "sharedCPU": "Shared CPU",
       "sharedMemory": "Shared memory",
+      "sharedGPU": "Shared GPU",
       "sharedPods": "Shared pods",
       "sharedEphemeralStorage": "Shared ephemeral storage"
     },

@@ -22,6 +22,7 @@ import (
 type Resources struct {
 	CPU              resource.Quantity `json:"cpu"`
 	Memory           resource.Quantity `json:"memory"`
+	GPU              resource.Quantity `json:"gpu"`
 	Pods             resource.Quantity `json:"pods"`
 	EphemeralStorage resource.Quantity `json:"ephemeralStorage"`
 }

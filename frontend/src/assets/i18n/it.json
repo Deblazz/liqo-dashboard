@@ -68,6 +68,7 @@
       "resourcesOffered": "Risorse offerte",
       "sharedCPU": "CPU condivisa",
       "sharedMemory": "Memoria condivisa",
+      "sharedGPU": "GPU condivisa",
       "sharedPods": "Pod condivisi",
       "sharedEphemeralStorage": "Storage effimero condiviso"
     },

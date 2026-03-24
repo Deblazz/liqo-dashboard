@@ -17,6 +17,7 @@
 export interface Resources {
     cpu: string;
     memory: string;
+    gpu: string;
     pods: string;
     ephemeralStorage: string;
 }
