@@ -99,6 +99,16 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Pod'
+  /v1/info:
+    get:
+      summary: Get local cluster info
+      responses:
+        '200':
+          description: Local cluster info
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterInfo'
 components:
   schemas:
     ForeignCluster:
@@ -243,3 +253,84 @@ components:
         - Ready
         - NotReady
         - SomeNotReady
+    ClusterInfo:
+      type: object
+      properties:
+        health:
+          $ref: '#/components/schemas/HealthInfo'
+        local:
+          $ref: '#/components/schemas/LocalClusterInfo'
+        network:
+          $ref: '#/components/schemas/NetworkInfo'
+        peerings:
+          $ref: '#/components/schemas/PeeringsInfo'
+
+    HealthInfo:
+      type: object
+      properties:
+        healthy:
+          type: boolean
+        unhealthyPods:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/PodHealth'
+
+    PodHealth:
+      type: object
+      properties:
+        status:
+          type: string
+        readyContainers:
+          type: integer
+        totalContainers:
+          type: integer
+        restarts:
+          type: integer
+
+    LocalClusterInfo:
+      type: object
+      properties:
+        clusterID:
+          type: string
+        version:
+          type: string
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+        APIServerAddr:
+          type: string
+
+    NetworkInfo:
+      type: object
+      properties:
+        podCIDR:
+          type: string
+        serviceCIDR:
+          type: string
+        externalCIDR:
+          type: string
+        internalCIDR:
+          type: string
+
+    PeeringsInfo:
+      type: object
+      properties:
+        peers:
+          type: array
+          items:
+            $ref: '#/components/schemas/PeerInfo'
+
+    PeerInfo:
+      type: object
+      properties:
+        clusterID:
+          type: string
+        role:
+          type: string
+        networkingStatus:
+          type: string
+        authenticationStatus:
+          type: string
+        offloadingStatus:
+          type: string

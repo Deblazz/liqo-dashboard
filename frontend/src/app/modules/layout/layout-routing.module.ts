@@ -19,6 +19,11 @@ const routes: Routes = [
     loadChildren: () => import('../namespace/namespace.module').then((m) => m.NamespaceModule),
   },
   {
+    path: 'status',
+    component: LayoutComponent,
+    loadChildren: () => import('../status/status.module').then((m)=> m.StatusModule),
+  },
+  {
     path: 'pods',
     component: LayoutComponent,
     loadChildren: () => import('../pod/pod.module').then((m) => m.PodModule),

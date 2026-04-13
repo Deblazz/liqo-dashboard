@@ -22,6 +22,7 @@
   "menu": {
     "dashboard": "Dashboard",
     "offloadedNamespaces": "Offloaded namespaces",
+    "liqoStatus": "Liqo status",
     "clusters": "Clusters",
     "namespaces": "Namespaces"
   },
@@ -86,5 +87,32 @@
     "offloadingConfirmQuestion": "Do you want to offload this namespace?",
     "offloadingSuccessText": "The namespace has been successfully offloaded. Updates will be available soon.",
     "unoffloadingSuccessText": "The namespace has been successfully unoffloaded. Updates will be available soon."
+  },
+  "status": {
+    "instance": {
+      "instanceLabel": "Liqo instance",
+      "clusterIdLabel": "Cluster ID",
+      "versionLabel": "Version",
+      "healthLabel": "Liqo health"
+    },
+    "info": {
+      "localClusterLabel": "Local cluster",
+      "apiServerAddressLabel": "API server address",
+      "clusterLabelsLabel": "Cluster labels"
+    },
+    "network": {
+      "networkDetailsLabel": "Network details",
+      "podCIDRLabel": "Pod CIDR",
+      "serviceCIDRLabel": "Service CIDR",
+      "externalCIDRLabel": "External CIDR"
+    },
+    "peering": {
+      "clusterIdLabel": "Cluster ID",
+      "roleLabel": "Role",
+      "networkingStatusLabel": "Networking status",
+      "authStatusLabel": "Authentication status",
+      "offloadingStatusLabel": "Offloading status",
+      "detailsButtonLabel": "More details"
+    }
   }
 }

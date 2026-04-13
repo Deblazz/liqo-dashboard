@@ -153,5 +153,35 @@
         "ephemeralStorage": "0"
       }
     }
-  ]
+  ],
+  "info": {
+    "health": {
+      "healthy": true
+    },
+    "local": {
+      "clusterID": "liqo-dashboard",
+      "version": "v1.0.1",
+      "labels": {
+        "liqo.io/provider": "kind"
+      },
+      "APIServerAddr": "https://123.456.789.000:6443"
+    },
+    "network": {
+      "podCIDR": "10.244.0.0/16",
+      "serviceCIDR": "10.96.0.0/16",
+      "externalCIDR": "10.70.0.0/16",
+      "internalCIDR": "10.80.0.0/16"
+    },
+    "peerings": {
+      "peers": [
+        {
+          "clusterID": "liqo-peer",
+          "role": "Provider",
+          "networkingStatus": "Healthy",
+          "authenticationStatus": "Healthy",
+          "offloadingStatus": "Healthy"
+        }
+      ]
+    }
+  }
 }

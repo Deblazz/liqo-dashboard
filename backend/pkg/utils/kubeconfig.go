@@ -24,6 +24,7 @@ import (
 	offloadingv1beta1 "github.com/liqotech/liqo/apis/offloading/v1beta1"
 	"k8s.io/apimachinery/pkg/runtime"
 	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
+	kubernetes "k8s.io/client-go/kubernetes"
 	clientgoscheme "k8s.io/client-go/kubernetes/scheme"
 	metricsv1beta1 "k8s.io/metrics/pkg/apis/metrics/v1beta1"
 	"sigs.k8s.io/controller-runtime/pkg/client"
@@ -58,4 +59,14 @@ func GetClient() (client.Client, error) {
 	}
 
 	return oClient, nil
+}
+
+// GetNativeClient returns a new kubernetes.Interface.
+func GetNativeClient() (kubernetes.Interface, error) {
+	cfg, err := config.GetConfig()
+
+	if err != nil {
+		return nil, err
+	}
+	return kubernetes.NewForConfig(cfg)
 }

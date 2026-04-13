@@ -47,6 +47,8 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.backend.service.port }}
+          args:
+            - "--liqo-namespace={{ .Values.liqo.namespace }}"
           resources:
           {{ toYaml .Values.backend.resources | indent 12 }}
           securityContext:

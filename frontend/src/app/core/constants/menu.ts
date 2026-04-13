@@ -12,5 +12,10 @@ export class Menu {
       route: '/namespaces',
       items: []
     },
+    {
+      group: 'menu.liqoStatus',
+      route: '/status',
+      items: []
+    }
   ];
 }

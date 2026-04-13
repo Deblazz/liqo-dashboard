@@ -24,14 +24,14 @@ You can install this UI via the [provided Helm Chart](./deployments/).
 
 2. Prerequisites
 
-    - A running cluster with Liqo installed
-    - [Metrics server](https://github.com/kubernetes-sigs/metrics-server) installed on the cluster
-    - [Helm](https://helm.sh/docs/intro/install/) utility installed on your machine
-  
+    - A running cluster with Liqo installed (Check the [Liqo documentation](https://docs.liqo.io/en/latest/installation/install.html) to learn more).
+    - [Metrics server](https://github.com/kubernetes-sigs/metrics-server) installed on the cluster.
+    - [Helm](https://helm.sh/docs/intro/install/) utility installed on your machine.
+
 3. Install the chart
 
     ```bash
-    helm install my-release ./deployments/liqo-dashboard
+    helm install liqo-dashboard -n liqo-dashboard --create-namespace ./deployments/liqo-dashboard
     ```
 
 ## Quick start tutorials

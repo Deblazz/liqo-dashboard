@@ -73,3 +73,7 @@ ingress:
       - path: "/"
         pathType: Prefix
   tls: []
+
+liqo: 
+  # The namespace where Liqo is installed
+  namespace: "liqo"

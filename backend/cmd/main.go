@@ -31,6 +31,7 @@ import (
 
 func main() {
 	listeningPort := flag.Uint("port", 8080, "The port where the rest API will be exposed")
+	liqoNamespace := flag.String("liqo-namespace", "liqo", "The namespace where liqo is installed")
 	flag.Parse()
 
 	// Get the k8s client to provide to the server
@@ -39,8 +40,13 @@ func main() {
 		log.Fatalf("Error getting client: %v", err)
 	}
 
+	nativeClient, err := utils.GetNativeClient()
+	if err != nil {
+		log.Fatalf("Error getting native client: %v", err)
+	}
+
 	// create a type that satisfies the `api.ServerInterface`, which contains an implementation of every operation from the generated code
-	server := handlers.NewServer(oClient)
+	server := handlers.NewServer(oClient, nativeClient, *liqoNamespace)
 
 	r := gin.Default()
 

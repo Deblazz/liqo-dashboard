@@ -15,17 +15,25 @@
 package handlers
 
 import (
+	"k8s.io/client-go/kubernetes"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 )
 
 // Server is the implementation of the REST api interfaces.
 type Server struct {
-	oClient client.Client
+	liqoNamespace string
+	oClient       client.Client
+	nativeClient  kubernetes.Interface
 }
 
 // NewServer returns a new REST api server implementation.
-func NewServer(oClient client.Client) Server {
+func NewServer(oClient client.Client, nativeClient kubernetes.Interface, liqoNamespace string) Server {
+	if liqoNamespace == "" {
+		liqoNamespace = "liqo" // default namespace
+	}
 	return Server{
-		oClient: oClient,
+		liqoNamespace: liqoNamespace,
+		oClient:       oClient,
+		nativeClient:  nativeClient,
 	}
 }
